@@ -36,6 +36,7 @@ void executeTests() {
         size_t size = mocker.generateRandomInt();
         int *array = mocker.generateRandomIntArray(size);
         Tester::integerSorts(array, size);
+        printArray(array,size);
         cout << "Passed test: " << i + 1 << endl;
     }
 }

@@ -7,6 +7,17 @@ void integersBubble(void *elements, int first, int second) {
     }
 }
 
+
+void integersSelect(void *elements, int first, int second) {
+
+}
+
+void integerInsert(void *elements, int first, int second) {
+
+}
+
+
+
 Sort* Tester::getSort(Algorithm sort, void *array, size_t size) {
     switch (sort) {
         case bubblesort: return new BubbleSort(array, size);
@@ -22,7 +33,8 @@ Sort* Tester::getSort(Algorithm sort, void *array, size_t size) {
 fptr Tester::getCompare(Algorithm sort) {
     switch (sort) {
         case bubblesort: return &integersBubble;
-        //case selectsort: return &integersSelect;
+        case selectsort: return &integersSelect;
+        case insertsort: return &integerInsert;
         default: throw invalid_argument("Not a valid comparer");
     }
 }
@@ -31,7 +43,7 @@ void Tester::integerSorts(int *array, size_t size) {
     Sort* sort;
     int temp[size];
 
-    Algorithm algorithm[] = { bubblesort, selectsort, insertsort, shellsort, quicksort, mergesort };
+    Algorithm algorithm[] = { bubblesort, selectsort , insertsort/*, shellsort, quicksort, mergesort */};
     size_t numberOfAlgorithms = sizeof(algorithm) / sizeof(algorithm[0]);
 
     for (int i = 0; i < numberOfAlgorithms; i++) {
