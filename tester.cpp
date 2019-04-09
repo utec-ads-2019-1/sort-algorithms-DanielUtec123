@@ -82,6 +82,43 @@ void merge(int *A,int *tmp,int low,int mid,int high)
     for(k=low;k<=high;k++) A[k]=tmp[k];
 }
 
+void quick_sort(int*,int,int);
+void integerQuick(void *elements, int low, int high) {
+    int *array = (int*) elements;
+    quick_sort(array,0,high);
+
+}
+
+int partition(int*,int,int);
+void quick_sort(int* A,int low, int high){
+    if(low<high){
+
+        int pi = partition(A,low,high);
+
+        quick_sort(A,low,pi-1);
+        quick_sort(A,pi,high);
+
+    }
+
+}
+
+int partition(int *A,int low, int high){
+    int pivot = A[high];
+
+    int i = low-1;
+
+    for (int j = low; j <high ; j++) {
+        if(A[j]<=pivot){
+
+            i++;
+            swap(A[i],A[j]);
+        }
+    }
+    swap(A[i+1],A[high]);
+    return (i+1);
+
+}
+
 
 
 
@@ -104,6 +141,7 @@ fptr Tester::getCompare(Algorithm sort) {
         case insertsort: return &integerInsert;
         case shellsort: return &integerShell;
         case mergesort: return &integerMerge;
+        case quicksort: return &integerQuick;
         default: throw invalid_argument("Not a valid comparer");
     }
 }
@@ -112,7 +150,7 @@ void Tester::integerSorts(int *array, size_t size) {
     Sort* sort;
     int temp[size];
 
-    Algorithm algorithm[] = { bubblesort, selectsort , insertsort, shellsort/*, quicksort*/, mergesort };
+    Algorithm algorithm[] = { bubblesort, selectsort , insertsort, shellsort, quicksort, mergesort };
     size_t numberOfAlgorithms = sizeof(algorithm) / sizeof(algorithm[0]);
 
     for (int i = 0; i < numberOfAlgorithms; i++) {
