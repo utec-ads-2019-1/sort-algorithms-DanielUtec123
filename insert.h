@@ -3,15 +3,30 @@
 
 #include "sort.h"
 
-class InsertSort : public Sort {       
-    public:
-        InsertSort(void *elements, size_t size) : Sort(elements, size) {}
+class InsertSort : public Sort {
+public:
+    InsertSort(void *elements, size_t size) : Sort(elements, size) {}
 
-        void execute(void (*compare)(void*, int, int)) {
-            // TODO
-        }
+    void execute(void (*compare)(void*, int, int)) {
+            for (int i= 1;i<size;i++){
+                    int *array = (int*) elements;
+                    int index= i;
+                    int tmp = array[i];
+                    for (int j=i-1;j>=0; j-- ){
+                            if(array[j]>tmp){
+                                    array[index] = array[j];
+                                    index--;
+                            }
+                            if (array[j]<=tmp){
+                                    array[j+1] =tmp;
+                                    break;
+                            }
 
-        inline string name() { return "InsertSort"; }
+                    }
+            }
+    }
+
+    inline string name() { return "InsertSort"; }
 };
 
 #endif
