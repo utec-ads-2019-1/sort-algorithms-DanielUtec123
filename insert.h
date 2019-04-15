@@ -9,7 +9,7 @@ public:
 
     void execute(void (*compare)(void*, int, int)) {
             for (int i= 1;i<size;i++){
-                    int *array = (int*) elements;
+                    int *array = (int*) elements; // Esto no es muy eficiente, deberías tener el cast por fuera (tampoco es crítico)
                     int index= i;
                     int tmp = array[i];
                     for (int j=i-1;j>=0; j-- ){

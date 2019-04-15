@@ -11,7 +11,7 @@ public:
 
 
             for (int i= 0;i<size-1;i++){
-                    int *array = (int*) elements;
+                    int *array = (int*) elements; // Esto no es muy eficiente, deberías tener el cast por fuera (tampoco es crítico)
                     int min = array[i];
                     int index= i;
                     for (int j=i+1;j<=size-1;j++ ){
